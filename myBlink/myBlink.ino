@@ -9,8 +9,9 @@
  */
 
 // Global declarations go here
-#define PIN     LED_BUILTIN // Output pin
-#define PERIOD  1000        // Time between changes in mS
+#define PIN     LED_BUILTIN                       // Output pin
+#define PERIOD  1000                              // Time between changes in mS
+#define BANNER  "\nProgram: myBlink, 18-03-2021"  // Splashscreen
 
 // the setup function runs once when you press reset or power the board
 void setup() {
@@ -18,11 +19,11 @@ void setup() {
   pinMode(PIN, OUTPUT);
   // Initialise serial output and declare program name
   Serial.begin(115200);
-  Serial.println("\nProgram: myBlink, 18-03-2021");
+  Serial.println(BANNER);
 }
 
 // the loop function runs over and over again forever
 void loop() {
-  digitalWrite(PIN, digitalRead(PIN)||1);   // flip the LED output
-  delay(PERIOD);                     // wait awhile
+  digitalWrite(PIN, digitalRead(PIN)^1);  // flip the LED output
+  delay(PERIOD);                          // wait awhile
 }
